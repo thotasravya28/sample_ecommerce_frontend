@@ -1,0 +1,196 @@
+<!-- 
+     <div class="text-center w-50 mx-auto" >
+          interpolation
+          <h1>{{nameOfCourse}}</h1>
+          <h5>Details of course</h5>
+          <h6>{{courseDetails.duration}}</h6>
+
+          property binding
+          <img src={{imagePath}} alt="">
+          <img [src]=imagePath alt="">
+          <input type="text" value={{nameOfCourse}}>
+          <input type="text" [value]=nameOfCourse>
+
+          event binding
+          <div>
+               <input type="text" class="form-control" #ref>
+               <button class="btn btn-primary" (click)="sendData(ref.value)">send data</button>
+               <h1>{{data}}</h1>
+          </div> 
+
+          toggle button
+          <button class="btn btn-primary" (click)="changeStatus()">{{status?"hide":"show"}}</button>
+
+          *ngIf
+          <h1 *ngIf="status">welcome</h1> 
+
+          *ngFor
+               <h2 *ngFor="let n of arr">{{n}}</h2>
+          <ul>
+               <li *ngFor="let n of arr">{{n}}</li>
+          </ul> 
+     </div> 
+
+
+
+
+
+
+
+
+     <div class="text-center mt-5">
+          heading 
+          <h2 class="itemlistheader">to-do list</h2>
+
+          adding item to list 
+          <div class="form-floating m-5">
+               <input type="text" class="form-control" id="floatingInput" placeholder="ex: eating..." #ref>
+               <label for="floatingInput">Add to do items</label>
+          </div>
+          <button class="btn btn-danger d-block mx-auto mt-3" (click)="addItem(ref.value);ref.value=''">add to list</button> 
+          <div class="form-floating m-5">
+               <input type="text" class="form-control" id="floatingInput" placeholder="ex: eating..." [(ngModel)]=item>
+               <label for="floatingInput">Add to do items</label>
+          </div>
+          <button class="btn btn-danger d-block mx-auto mt-3" (click)="addItem();">add to list</button>
+
+          heading to-do 
+          <h2 class="itemlistheader">list of actions</h2>
+
+          displaying items of list 
+          <h4 *ngFor="let item of todoItems;let ind=index" class="item">{{item}} <button class="btn btn-danger deleteBtn" (click)="deleteItem(ind)">X</button></h4>
+  </div>
+
+     
+
+
+
+
+
+<div class="m-5 p-3" id="FORM">
+    <h1 class="text-center">Registration Form</h1>
+  <form #ref="ngForm" (ngSubmit)="addUserData(ref)" class="m-2 p-3">
+    <div class="row m-2">
+         <div class="col-2"></div>
+         <div class="col-8 form-floating mt-3">
+              <input type="text" name="FirstName" id="FN" class="form-control" ngModel placeholder="text">
+              <label for="FN" class="m-1">Enter your first name</label>
+         </div>
+         <div class="col-2"></div>
+    </div>
+    <div class="row m-2">
+         <div class="col-2"></div>
+         <div class="col-8 form-floating mt-3">
+              <input type="text" name="LastName" id="LN" class="form-control" ngModel placeholder="text">
+              <label for="LN" class="m-1">Enter your last name</label>
+         </div>
+         <div class="col-2"></div>
+    </div>
+    <div class="row m-2">
+         <div class="col-2"></div>
+         <div class="col-8 form-floating mt-3">
+              <input type="email" placeholder="email" name="Email" id="EM" class="form-control" ngModel>
+              <label for="EM" class="form-label m-1">Email</label>
+         </div>
+         <div class="col-2"></div>
+    </div>
+    <div class="row m-2">
+      <div class="col-2"></div>
+      <div class="col-8 form-floating mt-3">
+           <input type="password" name="Password" placeholder="password" id="PW" class="form-control" ngModel>
+           <label for="PW" class="m-1" >Password</label>
+      </div>
+      <div class="col-2"></div>
+    </div>
+    <div class="row m-2">
+         <div class="col-2">
+              
+         </div>
+         <div class="col-8 form-floating mt-3">
+              <input type="number" placeholder="text" name="PhoneNumber" id="PN" class="form-control" ngModel>
+              <label for="PN" class="form-label m-1">Phone Number</label>
+         </div>
+      <div class="col-2"></div>
+    </div>
+    <div class="row m-2">
+         <div class="col-2"></div>
+         <div class="col-8 form-floating mt-3">
+              <input type="date" name="DOB" id="dob" placeholder="date" class="form-control" ngModel>
+              <label for="dob" class="form-label m-1">Date of Birth</label>
+         </div>
+         <div class="col-2"></div>
+    </div>
+   <button type="submit" class="d-block mx-auto btn btn-warning ps-3 m-3">SUBMIT</button>
+  </form>
+  <div *ngIf="booleanVarible">
+    <div class="container mb-3">
+         <div class="accordion m-1 w-75"  id="acr" *ngFor="let element of Users;let ind=index">
+              <div class="accodion-item border border-dark border-3 m-3">
+                  <div class="accordion-header">
+                      <button class="accordion-button bg-primary text-white" data-bs-toggle="collapse" [attr.data-bs-target]="'#x'+ind" data-bs-parent="#acr">{{element.FirstName}}</button>
+                   </div>
+                      <div class="accordion-collapse collapse" [attr.id]="'x'+ind" data-bs-parent="#acr"> 
+                   <div class="accordion-body bg-dark text-white">
+                        <h5>Full Name    :{{element.FirstName+" "+element.LastName}}</h5>
+                        <h5>Email id     :{{element.Email}}</h5>
+                        <h5>Date of birth:{{element.DOB}}</h5>
+                        <h5>Phone Number  :{{element.PhoneNumber}}</h5>
+                        <div class="text-end">
+                             <button (click)="DeleteUserData(ind)" class="btn text-danger bg-info border border-dark"><i class="fa fa-minus" aria-hidden="true"></i>del</button>
+                        </div>
+                   </div>
+                  </div>
+    </div>
+    </div>
+  </div>
+  </div>
+  </div> -->
+
+
+
+<!-- <div class="mx-auto mt-5" style="max-width: 700px;">
+     <form #ref="ngForm" (ngSubmit)="addUserData()">
+          <div>
+               <label for="un">username</label>
+               <input type="text" name="username" id="un" class="form-control" [(ngModel)]=userObj.username>
+          </div>
+
+          <div>
+               <label for="pw">dateofbirth</label>
+               <input type="date" name="dob" id="pw" class="form-control" [(ngModel)]=userObj.dob>
+          </div>
+
+          <div>
+               <label for="em">e-mail</label>
+               <input type="email" name="email" id="em" class="form-control" [(ngModel)]=userObj.email>
+          </div>
+          <button type="submit" class="btn btn-danger d-block mx-auto m-3">register</button>
+     </form> -->
+<!-- <div>
+
+     <div class="text-center">
+          <h2 class="text-info">list of users</h2>
+          <table class="table">
+               <tr>
+                    <th>username</th>
+                    <th>dateofbirth</th>
+                    <th>e-mail</th>
+               </tr>
+               <tbody>
+                    <tr *ngFor="let obj of userObj">
+                         <td>{{obj.username}}</td>
+                         <td>{{obj.dob}}</td>
+                         <td>{{obj.email}}</td>
+                    </tr>
+               </tbody>
+          </table>
+     </div>
+
+</div> -->
+
+<div class="container">
+     <div class="row">
+          <div class="col-sm-6"><app-user-registration></app-user-registration></div>
+          <div class="col-sm-6"><app-user-list></app-user-list></div>
+     </div>
+</div>
